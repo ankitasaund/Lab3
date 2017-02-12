@@ -9,14 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let xRect = 0
+    let yRect = 150
+    let wRect = 80
+    let hRect = 80
+    
     @IBOutlet var numFish: UISlider!
     //@IBOutlet var numFish: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //let fish = UIView()
+      //  fish.backgroundColor = UIColor.red
         // Do any additional setup after loading the view, typically from a nib.
-    
-    }
+            }
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -25,8 +32,48 @@ class ViewController: UIViewController {
 
     @IBAction func animateFish(_ sender: Any)
     {
+        //while(true){
+            animateForward()
+        //animateForward, pass different ys, images as arguments
+        //}
+
+	}
+
+    func animateForward(){
+        let fish = UIImageView()
+        fish.image = #imageLiteral(resourceName: "fish4")
+        fish.frame = CGRect(x: xRect, y: yRect, width: wRect, height: hRect)
+        self.view.addSubview(fish)
+        UIView.animate(withDuration: 5.0, delay: 0.5,  animations:{ UIViewAnimationOptions.curveLinear
+            //fish.backgroundColor = UIColor.cyan
+            fish.frame = CGRect (x: self.xRect + 310,  y: self.yRect, width: self.wRect, height: self.hRect)
+        },
+                       completion: {(true) in
+                        fish.removeFromSuperview()
+                        self.animateReverse()
+                        //self.iterationComplete = true
+        })
+
+    }
+    
+   func animateReverse(){
+        let fish = UIImageView()
+        fish.image = #imageLiteral(resourceName: "fish4-1")
+        fish.frame = CGRect(x: 310, y: yRect, width: wRect, height: hRect)
+        self.view.addSubview(fish)
+        UIView.animate(withDuration: 5.0, delay: 0.2, animations:{
+            //fish.backgroundColor = UIColor.cyan
+            fish.frame = CGRect (x: self.xRect - 310,  y: self.yRect, width: self.wRect, height: self.hRect)
+        },
+                       completion: {animationFinished in
+                        fish.removeFromSuperview()
+                        self.animateForward()})
+
         
-    let noOfFish = Int(roundf(self.numFish!.value))
+    }
+    
+    
+   /* let noOfFish = Int(roundf(self.numFish!.value))
          for fishnum in 1...noOfFish
          {
             let wFish = (Int(arc4random() % 10) + 1) * 20  // fish width between 20 to 200
@@ -48,7 +95,10 @@ class ViewController: UIViewController {
                             
             })
             
-        }
-    }
+        } 
+         
+         
+                  }*/
+   }
 
-}
+
