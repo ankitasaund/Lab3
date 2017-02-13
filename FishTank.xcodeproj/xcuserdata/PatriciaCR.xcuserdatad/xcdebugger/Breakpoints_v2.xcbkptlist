@@ -10,13 +10,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FishTank/ViewController.swift"
-            timestampString = "508511021.071631"
+            timestampString = "508632453.919868"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "animateFish(_:)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "moveRight(ypos:heightfish:widthfish:numberfish:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FishTank/ViewController.swift"
+            timestampString = "508632389.47977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FishTank.ViewController.numFish.getter : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UISlider&gt;"
+                  moduleName = "FishTank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/PatriciaCR/Documents/Lab3/FishTank/ViewController.swift"
+                  timestampString = "508632389.946802"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FishTank.ViewController.numFish.setter : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UISlider&gt;"
+                  moduleName = "FishTank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/PatriciaCR/Documents/Lab3/FishTank/ViewController.swift"
+                  timestampString = "508632389.948248"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FishTank.ViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; FishTank.ViewController"
+                  moduleName = "FishTank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/PatriciaCR/Documents/Lab3/FishTank/ViewController.swift"
+                  timestampString = "508632389.949542"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "941">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FishTank.ViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;FishTank.ViewController&gt;"
+                  moduleName = "FishTank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/PatriciaCR/Documents/Lab3/FishTank/ViewController.swift"
+                  timestampString = "508632389.950884"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "779">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
