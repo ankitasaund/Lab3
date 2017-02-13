@@ -30,11 +30,11 @@ class ViewController: UIViewController {
     
     func generateBubbles()
     {
-        let wBubble = (Int(arc4random() % 10) + 1) * 4   //Bubble width between 2 to 20
+        let wBubble = (Int(arc4random() % 10) + 1) * 3    //Bubble width between 3 to 30
         let hBubble = (wBubble * 3) / 4                   //height 75% of width
-        let xPos = (Int(arc4random() % 736))              //Bubble starts at different horizontal spot
-        let yStart = (Int(arc4random() % 90)+300)                                //starts on bottom
-        let yEnd = 0                                        //ends on top
+        let xPos = (Int(arc4random() % 736)) - wBubble    //Bubble starts at different horizontal spot
+        let yStart = (Int(arc4random() % 90)+300)         //starts on bottom
+        let yEnd = 0                                      //ends on top
                 
         let bb = UIImageView()
         bb.image = #imageLiteral(resourceName: "bubble")
@@ -74,7 +74,6 @@ class ViewController: UIViewController {
         let aDur = Double(arc4random() % 15)+5         //duration between 5-20 seconds
         let aDelay = Double(arc4random() % 2)          // delay between 0 and 1 sec
 
-        
         UIView.animate(
             withDuration: aDur,
             delay: aDelay,
@@ -103,7 +102,7 @@ class ViewController: UIViewController {
         //duration and delay for animation
         let aDur = Double(arc4random() % 15)+5         // duration between 5-20 seconds
         let aDelay = Double(arc4random() % 2)          // delay between 0 and 1 sec
-        
+
         UIView.animate(
             withDuration: aDur,
             delay: aDelay,
@@ -120,6 +119,13 @@ class ViewController: UIViewController {
     @IBAction func animateFish(_ sender: Any)
     {
     let noOfFish = Int(roundf(self.numFish!.value))
+        
+        //Generates 20 bubbles
+        for numb in 1...20
+        {
+            generateBubbles()
+        }
+    
          for fish in 1...noOfFish
          {
             let wFish = (Int(arc4random() % 10) + 10) * 6   //fish width between 50 to 120
@@ -127,7 +133,6 @@ class ViewController: UIViewController {
             let yPos = (Int(arc4random() % 290))            //fish starts at different vertical spot
             
             let fishnumber = Int(arc4random() % 9)          //Selects a random fish from the array
-            generateBubbles()
             
             //Calls function moveRight
             moveRight(ypos: yPos, heightfish: hFish, widthfish: wFish, numberfish: fishnumber)
