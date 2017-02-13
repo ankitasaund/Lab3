@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
         RoundBorder.layer.cornerRadius = 4
+    
     }
     
     var rightFish = [#imageLiteral(resourceName: "fish1R"),#imageLiteral(resourceName: "fish2R"),#imageLiteral(resourceName: "fish3R"),#imageLiteral(resourceName: "fish4R"),#imageLiteral(resourceName: "fish5R"),#imageLiteral(resourceName: "fish6R"), #imageLiteral(resourceName: "fish7R"),#imageLiteral(resourceName: "fish8R"),#imageLiteral(resourceName: "fish9R")]
@@ -27,12 +28,40 @@ class ViewController: UIViewController {
     @IBOutlet var numFish: UISlider!
     @IBOutlet var RoundBorder: UIButton!
     
+    func generateBubbles()
+    {
+        let wBubble = (Int(arc4random() % 10) + 1) * 4   //Bubble width between 2 to 20
+        let hBubble = (wBubble * 3) / 4                   //height 75% of width
+        let xPos = (Int(arc4random() % 736))              //Bubble starts at different horizontal spot
+        let yStart = (Int(arc4random() % 90)+300)                                //starts on bottom
+        let yEnd = 0                                        //ends on top
+                
+        let bb = UIImageView()
+        bb.image = #imageLiteral(resourceName: "bubble")
+        bb.frame = CGRect(x: xPos, y: yStart, width: wBubble, height: hBubble)
+        self.view.addSubview(bb)
+        
+        //Brings the button and slider on top of the bubbles
+        numFish.layer.zPosition = 1.0
+        RoundBorder.layer.zPosition = 1.0
+        bb.layer.zPosition = 0.9
+        
+        //duration and delay for animation
+        let aDur = Double(arc4random() % 10)+5         //duration between 5-15 seconds
+        
+        
+        UIView.animate(
+            withDuration: aDur,
+            animations: {bb.frame = CGRect(x: xPos, y: yEnd, width: wBubble, height:hBubble)},
+            completion: {animationFinished in bb.removeFromSuperview(); self.generateBubbles()}
+        )
+    }
     
     //Function moveRight : Fish move to the right
     func moveRight(ypos: Int, heightfish: Int, widthfish: Int, numberfish: Int)
     {
         let xStart = 0                                  //starts outside of left edge
-        let xEnd = 736 - widthfish                          //ends outside of right edge
+        let xEnd = 736 - widthfish                      //ends outside of right edge
 
         
         let fishr = UIImageView()
@@ -42,7 +71,7 @@ class ViewController: UIViewController {
         
         
         //duration and delay for animation
-        let aDur = Double(arc4random() % 15)+5        // duration between 5-20 seconds
+        let aDur = Double(arc4random() % 15)+5         //duration between 5-20 seconds
         let aDelay = Double(arc4random() % 2)          // delay between 0 and 1 sec
 
         
@@ -62,8 +91,8 @@ class ViewController: UIViewController {
     //Function moveLeft : Fish move to the left
     func moveLeft(ypos: Int, heightfish: Int, widthfish: Int, numberfish: Int)
     {
-        let xStart = 736 - widthfish                          //starts outside of left edge
-        let xEnd = 0                                      //ends outside of right edge
+        let xStart = 736 - widthfish                      //starts outside of right edge
+        let xEnd = 0                                      //ends outside of left edge
 
         let fishl = UIImageView()
         fishl.image = leftFish[numberfish]
@@ -91,15 +120,17 @@ class ViewController: UIViewController {
     @IBAction func animateFish(_ sender: Any)
     {
     let noOfFish = Int(roundf(self.numFish!.value))
-         for fishnum in 1...noOfFish
+         for fish in 1...noOfFish
          {
             let wFish = (Int(arc4random() % 10) + 10) * 6   //fish width between 50 to 120
             let hFish = (wFish * 3) / 4                     //height 75% of width
             let yPos = (Int(arc4random() % 290))            //fish starts at different vertical spot
             
             let fishnumber = Int(arc4random() % 9)          //Selects a random fish from the array
+            generateBubbles()
             
-            moveRight(ypos: yPos, heightfish: hFish, widthfish: wFish, numberfish: fishnumber) //Fish goes right
+            //Calls function moveRight
+            moveRight(ypos: yPos, heightfish: hFish, widthfish: wFish, numberfish: fishnumber)
         
         }
     }
