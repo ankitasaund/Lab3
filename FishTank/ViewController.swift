@@ -17,16 +17,57 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
+        
+        GlassImg.image = #imageLiteral(resourceName: "fishglass")
+        //First the button and slider, then the glass
+        numFish.layer.zPosition = 1.0
+        RoundBorder.layer.zPosition = 1.0
+        GlassImg.layer.zPosition=0.9
+    
         RoundBorder.layer.cornerRadius = 4
+        
+        starfish() //Generates starfish
+        
+        //Generates 25 bubbles
+        for numb in 1...25
+        {
+            generateBubbles()
+        }
+
     
     }
     
     var rightFish = [#imageLiteral(resourceName: "fish1R"),#imageLiteral(resourceName: "fish2R"),#imageLiteral(resourceName: "fish3R"),#imageLiteral(resourceName: "fish4R"),#imageLiteral(resourceName: "fish5R"),#imageLiteral(resourceName: "fish6R"), #imageLiteral(resourceName: "fish7R"),#imageLiteral(resourceName: "fish8R"),#imageLiteral(resourceName: "fish9R")]
     var leftFish = [#imageLiteral(resourceName: "fish1L"),#imageLiteral(resourceName: "fish2L"),#imageLiteral(resourceName: "fish3L"),#imageLiteral(resourceName: "fish4L"),#imageLiteral(resourceName: "fish5L"),#imageLiteral(resourceName: "fish6L"),#imageLiteral(resourceName: "fish7L"),#imageLiteral(resourceName: "fish8L"),#imageLiteral(resourceName: "fish9L")]
 
-    
+    @IBOutlet var GlassImg: UIImageView!
     @IBOutlet var numFish: UISlider!
     @IBOutlet var RoundBorder: UIButton!
+    
+    func starfish()
+    {
+        let wstar = 90
+        let hstar = 90
+        let xPos = 630          //X-position of starfish
+        let yPos = 100          //Y-position of starfish
+        
+        let star = UIImageView()
+        star.image = #imageLiteral(resourceName: "redStarfish")
+        star.frame = CGRect(x: xPos, y: yPos, width: wstar, height: hstar)
+        self.view.addSubview(star)
+        star.layer.zPosition = 0.8
+        
+        UIView.animate(withDuration: 20.0, delay: 0, options: [.autoreverse, .repeat], animations:
+            {() -> Void in
+            let transform: CGAffineTransform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
+            star.transform = transform
+        }, completion: {(finished: Bool) -> Void in
+            let transform: CGAffineTransform = CGAffineTransform.identity
+            star.transform = transform;
+        })
+    
+    }
+    
     
     func generateBubbles()
     {
@@ -41,12 +82,10 @@ class ViewController: UIViewController {
         bb.frame = CGRect(x: xPos, y: yStart, width: wBubble, height: hBubble)
         self.view.addSubview(bb)
         
-        //Brings the button and slider on top of the bubbles
-        numFish.layer.zPosition = 1.0
-        RoundBorder.layer.zPosition = 1.0
-        bb.layer.zPosition = 0.9
+        //bubbles behind the button and slider 
+        bb.layer.zPosition = 0.7
         
-        //duration and delay for animation
+        //duration for animation
         let aDur = Double(arc4random() % 10)+5         //duration between 5-15 seconds
         
         
@@ -56,6 +95,15 @@ class ViewController: UIViewController {
             completion: {animationFinished in bb.removeFromSuperview(); self.generateBubbles()}
         )
     }
+    
+    
+    func generateseaweed()
+    {
+    
+    
+    
+    }
+    
     
     //Function moveRight : Fish move to the right
     func moveRight(ypos: Int, heightfish: Int, widthfish: Int, numberfish: Int)
@@ -118,17 +166,12 @@ class ViewController: UIViewController {
 
     @IBAction func animateFish(_ sender: Any)
     {
-    let noOfFish = Int(roundf(self.numFish!.value))
         
-        //Generates 20 bubbles
-        for numb in 1...20
-        {
-            generateBubbles()
-        }
+        let noOfFish = Int(roundf(self.numFish!.value)) //Number of fishes= slider
     
          for fish in 1...noOfFish
          {
-            let wFish = (Int(arc4random() % 10) + 10) * 6   //fish width between 50 to 120
+            let wFish = (Int(arc4random() % 10) + 10) * 6   //fish width between 60 to 114
             let hFish = (wFish * 3) / 4                     //height 75% of width
             let yPos = (Int(arc4random() % 290))            //fish starts at different vertical spot
             
