@@ -20,30 +20,74 @@ class ViewController: UIViewController {
         RoundBorder.layer.cornerRadius = 4
     }
     
-    var rightFish = [#imageLiteral(resourceName: "fish1R"),#imageLiteral(resourceName: "fish2R"),#imageLiteral(resourceName: "fish3R"),#imageLiteral(resourceName: "fish4R"),#imageLiteral(resourceName: "fish5R"),#imageLiteral(resourceName: "fish6R")]
-    var leftFish = [#imageLiteral(resourceName: "fish1L"),#imageLiteral(resourceName: "fish2L"),#imageLiteral(resourceName: "fish3L"),#imageLiteral(resourceName: "fish4L"),#imageLiteral(resourceName: "fish5L"),#imageLiteral(resourceName: "fish6L")]
+    var rightFish = [#imageLiteral(resourceName: "fish1R"),#imageLiteral(resourceName: "fish2R"),#imageLiteral(resourceName: "fish3R"),#imageLiteral(resourceName: "fish4R"),#imageLiteral(resourceName: "fish5R"),#imageLiteral(resourceName: "fish6R"), #imageLiteral(resourceName: "fish7R"),#imageLiteral(resourceName: "fish8R"),#imageLiteral(resourceName: "fish9R")]
+    var leftFish = [#imageLiteral(resourceName: "fish1L"),#imageLiteral(resourceName: "fish2L"),#imageLiteral(resourceName: "fish3L"),#imageLiteral(resourceName: "fish4L"),#imageLiteral(resourceName: "fish5L"),#imageLiteral(resourceName: "fish6L"),#imageLiteral(resourceName: "fish7L"),#imageLiteral(resourceName: "fish8L"),#imageLiteral(resourceName: "fish9L")]
 
     
     @IBOutlet var numFish: UISlider!
     @IBOutlet var RoundBorder: UIButton!
     
     
-    //Function ........ : Fish move to the right
-    func moveRight(Fish:Int)
-    {}
+    //Function moveRight : Fish move to the right
+    func moveRight(ypos: Int, heightfish: Int, widthfish: Int, numberfish: Int)
+    {
+        let xStart = 0                                  //starts outside of left edge
+        let xEnd = 736 - widthfish                          //ends outside of right edge
+
+        
+        let fishr = UIImageView()
+        fishr.image = rightFish[numberfish]
+        fishr.frame = CGRect(x: xStart, y: ypos, width: widthfish, height: heightfish)
+        self.view.addSubview(fishr)
+        
+        
+        //duration and delay for animation
+        let aDur = Double(arc4random() % 15)+5        // duration between 5-20 seconds
+        let aDelay = Double(arc4random() % 2)          // delay between 0 and 1 sec
+
+        
+        UIView.animate(
+            withDuration: aDur,
+            delay: aDelay,
+            animations: {
+                fishr.frame = CGRect(x: xEnd, y: ypos, width: widthfish, height:heightfish)
+                        },
+            completion: {
+                animationFinished in fishr.removeFromSuperview();
+                self.moveLeft(ypos: ypos, heightfish: heightfish, widthfish: widthfish, numberfish: numberfish)}
+        )
+    }
 
     
-    
-    
-    //Function ........ : Fish move to the right
-    func moveLeft(Fish:Int)
-    {}
-    
-    
-    func flip(){}
+    //Function moveLeft : Fish move to the left
+    func moveLeft(ypos: Int, heightfish: Int, widthfish: Int, numberfish: Int)
+    {
+        let xStart = 736 - widthfish                          //starts outside of left edge
+        let xEnd = 0                                      //ends outside of right edge
 
+        let fishl = UIImageView()
+        fishl.image = leftFish[numberfish]
+        fishl.frame = CGRect(x: xStart, y: ypos, width: widthfish, height: heightfish)
+        self.view.addSubview(fishl)
+        
+
+        //duration and delay for animation
+        let aDur = Double(arc4random() % 15)+5         // duration between 5-20 seconds
+        let aDelay = Double(arc4random() % 2)          // delay between 0 and 1 sec
+        
+        UIView.animate(
+            withDuration: aDur,
+            delay: aDelay,
+            animations: {
+                fishl.frame = CGRect(x: xEnd, y: ypos, width: widthfish, height:heightfish)},
+            completion: {
+                animationFinished in fishl.removeFromSuperview();
+                self.moveRight(ypos: ypos, heightfish: heightfish, widthfish: widthfish, numberfish: numberfish)})
+
+    }
     
     
+
     @IBAction func animateFish(_ sender: Any)
     {
     let noOfFish = Int(roundf(self.numFish!.value))
@@ -51,33 +95,11 @@ class ViewController: UIViewController {
          {
             let wFish = (Int(arc4random() % 10) + 10) * 6   //fish width between 50 to 120
             let hFish = (wFish * 3) / 4                     //height 75% of width
-            let xStart = 0 - wFish                          //starts outside of left edge
-            let xEnd = 736 - wFish                          //ends outside of right edge
             let yPos = (Int(arc4random() % 290))            //fish starts at different vertical spot
             
-            //duration and delay for animation
-            let aDur = Double(arc4random() % 35) + 5        // duration between 5-40 seconds
-            let aDelay = Double(arc4random() % 10)          // delay between 0 and 9 sec
+            let fishnumber = Int(arc4random() % 9)          //Selects a random fish from the array
             
-            let fishnumber = Int(arc4random() % 5)          //Selects a random fish from the array
-            
-            let fishr = UIImageView()
-            fishr.image = rightFish[fishnumber]
-            fishr.frame = CGRect(x: xStart, y: yPos, width: wFish, height: hFish)
-            self.view.addSubview(fishr)
-            
-            UIView.animate(withDuration: aDur, delay: aDelay, options: [UIViewAnimationOptions.repeat],
-                           animations:{fishr.frame = CGRect (x: xEnd, y: yPos, width: wFish, height: hFish)},
-                           completion: {animationFinished in fishr.removeFromSuperview()})
-            /*
-            let fishl = UIImageView()
-            fishl.image = leftFish[fishnumber]
-            fishl.frame = CGRect(x: xStart, y: yPos, width: wFish, height: hFish)
-            self.view.addSubview(fishl)
-            
-            UIView.transition(from: fishr, to: fishl, duration: 1, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
-            */
-
+            moveRight(ypos: yPos, heightfish: hFish, widthfish: wFish, numberfish: fishnumber) //Fish goes right
         
         }
     }
