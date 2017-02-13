@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         {
             generateBubbles()
         }
+        generateseaweed()
 
     
     }
@@ -43,6 +44,9 @@ class ViewController: UIViewController {
     @IBOutlet var GlassImg: UIImageView!
     @IBOutlet var numFish: UISlider!
     @IBOutlet var RoundBorder: UIButton!
+    @IBOutlet var seaweedImg1: UIImageView!
+    @IBOutlet var seaweedImg2: UIImageView!
+    @IBOutlet var redSw: UIImageView!
     
     func starfish()
     {
@@ -57,7 +61,7 @@ class ViewController: UIViewController {
         self.view.addSubview(star)
         star.layer.zPosition = 0.8
         
-        UIView.animate(withDuration: 20.0, delay: 0, options: [.autoreverse, .repeat], animations:
+        UIView.animate(withDuration: 30.0, delay: 0, options: [.autoreverse, .repeat], animations:
             {() -> Void in
             let transform: CGAffineTransform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
             star.transform = transform
@@ -99,9 +103,9 @@ class ViewController: UIViewController {
     
     func generateseaweed()
     {
-    
-    
-    
+        seaweedImg1.layer.zPosition=0.8
+        //seaweedImg2.layer.zPosition=0.8
+
     }
     
     
