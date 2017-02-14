@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
-
+    var playSound : AVAudioPlayer!
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -195,6 +197,16 @@ class ViewController: UIViewController {
 
     @IBAction func animateFish(_ sender: Any)
     {
+        let path = Bundle.main.path(forResource: "wave", ofType: "mp3")!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            let sound = try AVAudioPlayer(contentsOf: url)
+            playSound = sound
+            sound.play()
+        } catch {
+            // couldn't load file :(
+        }
         
         let noOfFish = Int(roundf(self.numFish!.value)) //Number of fishes= slider
     
