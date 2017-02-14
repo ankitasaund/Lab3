@@ -22,12 +22,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdH-dl-fjy">
-                                <rect key="frame" x="375" y="376" width="111" height="30"/>
+                                <rect key="frame" x="375" y="372" width="111" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36470588235294116" green="0.27450980392156865" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                 <color key="tintColor" red="0.83957546949386597" green="0.79168242216110229" blue="0.99865847826004028" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Click Me"/>
+                                <state key="normal" title="Animate"/>
                                 <connections>
                                     <action selector="animateFish:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ezw-0z-ho1"/>
                                 </connections>
@@ -40,10 +40,6 @@
                                 <color key="maximumTrackTintColor" red="0.14521975679999999" green="0.58576148630000002" blue="0.71394396739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="thumbTintColor" red="0.39040770095657534" green="0.72802970588101967" blue="0.84874418358714043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </slider>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBm-3b-AsN">
-                                <rect key="frame" x="-8" y="-10" width="753" height="434"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="redSeaweed" translatesAutoresizingMaskIntoConstraints="NO" id="fKq-JL-rsm">
                                 <rect key="frame" x="503" y="231" width="122" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -54,6 +50,10 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seaweed2" translatesAutoresizingMaskIntoConstraints="NO" id="rpc-uH-TIk">
                                 <rect key="frame" x="5" y="180" width="232" height="273"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBm-3b-AsN">
+                                <rect key="frame" x="-8" y="-10" width="753" height="434"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
