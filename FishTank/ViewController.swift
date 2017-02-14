@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     {
         let wBubble = (Int(arc4random() % 10) + 1) * 3    //Bubble width between 3 to 30
         let hBubble = (wBubble * 3) / 4                   //height 75% of width
-        let xPos = (Int(arc4random() % 736)) - wBubble    //Bubble starts at different horizontal spot
+        let xPos = (Int(arc4random() % 706))     //Bubble starts at different horizontal spot
         let yStart = (Int(arc4random() % 90)+300)         //starts on bottom
         let yEnd = 0                                      //ends on top
                 
@@ -104,7 +104,32 @@ class ViewController: UIViewController {
     func generateseaweed()
     {
         seaweedImg1.layer.zPosition=0.8
-        //seaweedImg2.layer.zPosition=0.8
+        
+        UIView.animate(withDuration: 10.0, delay: 0, options: [.autoreverse, .repeat], animations:
+            {() -> Void in
+                let transform: CGAffineTransform = CGAffineTransform(rotationAngle: CGFloat(M_PI/40))
+                self.seaweedImg1.transform = transform
+        }, completion: {(finished: Bool) -> Void in
+            let transform: CGAffineTransform = CGAffineTransform.identity
+            self.seaweedImg1.transform = transform; })
+
+        UIView.animate(withDuration: 10.0, delay: 0, options: [.autoreverse, .repeat], animations:
+            {() -> Void in
+                let transform: CGAffineTransform = CGAffineTransform(rotationAngle: CGFloat(-M_PI/40))
+                self.seaweedImg2.transform = transform
+        }, completion: {(finished: Bool) -> Void in
+            let transform: CGAffineTransform = CGAffineTransform.identity
+            self.seaweedImg2.transform = transform; })
+        
+        UIView.animate(withDuration: 10.0, delay: 0, options: [.autoreverse, .repeat], animations:
+            {() -> Void in
+                let transform: CGAffineTransform = CGAffineTransform(rotationAngle: CGFloat(-M_PI/40))
+                self.redSw.transform = transform
+        }, completion: {(finished: Bool) -> Void in
+            let transform: CGAffineTransform = CGAffineTransform.identity
+            self.redSw.transform = transform; })
+
+        
 
     }
     
